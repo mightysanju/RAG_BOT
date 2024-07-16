@@ -10,9 +10,8 @@ from langchain.chains import RetrievalQA
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import ChatOpenAI
 
-
 app = Flask(__name__)
-CORS(app, origins=['http://localhost:3000'])  # Enable CORS for all routes
+CORS(app)  # Enable CORS for all routes
 
 #os.environ["OPENAI_API_KEY"] = #constants.APIKEY
 os.getenv('OPENAI_API_KEY')
