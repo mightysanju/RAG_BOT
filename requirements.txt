@@ -1,6 +1,7 @@
-Flask==2.0.2
-Flask-Cors==3.0.10
+Flask==2.2.2
+Flask-Cors==4.0.1
 openai==0.7.0
-langchain==0.0.147
-faiss-cpu==1.7.1
-PyPDF2==1.26.0
+langchain==0.2.7
+langchain-community==0.2.7
+faiss-cpu==1.8.0.post1
+langchain_openai==0.1.16
