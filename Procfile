@@ -1,1 +1,1 @@
-web gunicorn AppGENAI:app 
+web gunicorn app:app 
