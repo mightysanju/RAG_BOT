@@ -9,19 +9,20 @@ from langchain_community.embeddings import OpenAIEmbeddings
 from langchain.chains import RetrievalQA
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import ChatOpenAI
-import constants
+
 
 app = Flask(__name__)
 CORS(app, origins=['http://localhost:3000'])  # Enable CORS for all routes
 
-os.environ["OPENAI_API_KEY"] = constants.APIKEY
+#os.environ["OPENAI_API_KEY"] = #constants.APIKEY
+os.getenv('OPENAI_API_KEY')
 
 # Load PDF Documents
 loader = PyPDFLoader("/Users/mighty_sanju/Desktop/RESUME/RESUME_RW.pdf")
 documents = loader.load()
 
 # Chunk the Documents
-text_splitter = RecursiveCharacterTextSplitter(chunk_size=100, chunk_overlap=20)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size=200, chunk_overlap=50)
 docs = text_splitter.split_documents(documents)
 
 # Generate Embeddings
