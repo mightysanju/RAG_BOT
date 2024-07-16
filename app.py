@@ -10,14 +10,19 @@ from langchain.chains import RetrievalQA
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_openai import ChatOpenAI
 
+
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
 #os.environ["OPENAI_API_KEY"] = #constants.APIKEY
 os.getenv('OPENAI_API_KEY')
+# Get the directory of the current script
+script_dir = os.path.dirname(os.path.abspath(__file__))
 
+# Construct the path to the file
+file_path = os.path.join(script_dir, 'RESUME.pdf')
 # Load PDF Documents
-loader = PyPDFLoader("/Users/mighty_sanju/Desktop/RESUME/RESUME_RW.pdf")
+loader = PyPDFLoader(file_path)
 documents = loader.load()
 
 # Chunk the Documents
@@ -46,6 +51,6 @@ def ask_bot():
     return jsonify({'answer': answer})
 
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
+    port = int(os.environ.get('PORT', 5100))
     app.run(host='0.0.0.0', port=port)
 
